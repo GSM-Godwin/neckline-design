@@ -2,16 +2,16 @@
 
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+import { CircleLoader } from 'react-spinners';
 
-// Dynamically import the component that uses `useSearchParams`
 const DynamicResultsPage = dynamic(() => import('../../components/ResultsPageContent'), {
-  ssr: false, // Disable SSR for this component
-  loading: () => <div>Loading...</div>, // Fallback content during loading
+  ssr: false,
+  loading: () => <CircleLoader />,
 });
 
 export default function SuspenseWrapper() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<CircleLoader />}>
       <DynamicResultsPage />
     </Suspense>
   );

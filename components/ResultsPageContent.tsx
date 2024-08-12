@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { CircleLoader } from 'react-spinners'
 import ShapeResults from './ShapeResults';
 
 const ResultsPageContent = () => {
@@ -36,7 +37,7 @@ const ResultsPageContent = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      {shapeType ? <ShapeResults shapeType={shapeType} /> : "Loading..."}
+      {shapeType ? <ShapeResults shapeType={shapeType} /> : <CircleLoader size="10vw" />}
     </div>
   );
 };
