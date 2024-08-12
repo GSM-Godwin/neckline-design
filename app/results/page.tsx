@@ -1,9 +1,8 @@
 "use client";
 
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import ShapeResults from '../../components/ShapeResults';
-// import { CircleLoader } from 'react-spinners';
 
 const ResultsPage = () => {
   const searchParams = useSearchParams();
@@ -42,4 +41,11 @@ const ResultsPage = () => {
   );
 };
 
-export default ResultsPage;
+// Wrap the component with a Suspense boundary
+export default function SuspenseWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResultsPage />
+    </Suspense>
+  );
+}
