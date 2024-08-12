@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && python model/main.py",
+    "build:next": "next build",
+    "build": "./build-and-run-python.sh",
     "start": "next start",
     "lint": "next lint"
   },
