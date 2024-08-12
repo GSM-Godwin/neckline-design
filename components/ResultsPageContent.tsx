@@ -37,7 +37,7 @@ const ResultsPageContent = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      {shapeType ? <ShapeResults shapeType={shapeType} /> : <CircleLoader size="10vw" />}
+      {shapeType ? <ShapeResults shapeType={shapeType} /> : <div className='flex flex-col items-center justify-center '><CircleLoader size="10vw" /> <p>modelling suitable neckline designs...</p></div>}
     </div>
   );
 };
