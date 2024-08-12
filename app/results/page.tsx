@@ -1,51 +1,18 @@
 "use client";
 
-import { Suspense, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import ShapeResults from '../../components/ShapeResults';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
-const ResultsPage = () => {
-  const searchParams = useSearchParams();
-  const [shapeType, setShapeType] = useState<string | null>(null);
+// Dynamically import the component that uses `useSearchParams`
+const DynamicResultsPage = dynamic(() => import('../../components/ResultsPageContent'), {
+  ssr: false, // Disable SSR for this component
+  loading: () => <div>Loading...</div>, // Fallback content during loading
+});
 
-  useEffect(() => {
-    const fetchShapeType = async () => {
-      if (searchParams) {
-        const measurements = {
-          shoulderWidth: searchParams.get('shoulderWidth'),
-          bustCircumference: searchParams.get('bustCircumference'),
-          waistCircumference: searchParams.get('waistCircumference'),
-          hipCircumference: searchParams.get('hipCircumference'),
-        };
-
-        const res = await fetch('/api/shape', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(measurements),
-        });
-
-        const data = await res.json();
-        setShapeType(data.shapeType);
-      }
-    };
-
-    fetchShapeType();
-  }, [searchParams]);
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      {shapeType ? <ShapeResults shapeType={shapeType} /> : "Loading..."}
-    </div>
-  );
-};
-
-// Wrap the component with a Suspense boundary
 export default function SuspenseWrapper() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <ResultsPage />
+      <DynamicResultsPage />
     </Suspense>
   );
 }
