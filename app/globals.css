@@ -25,6 +25,6 @@ body {
 }
 
 .btn-submit {
-  @apply bg-[#0a0a0a] text-white py-2 px-4 rounded-lg hover:bg-[#0a0a0a] transition-colors w-full;
+  @apply bg-[#0a0a0ae3] text-white py-2 px-4 rounded-lg hover:bg-[#0a0a0a] transition-colors w-full;
 }
 

@@ -36,6 +36,7 @@ const MeasurementForm = () => {
           <input
             type="number"
             name="shoulderWidth"
+            min="0"
             value={measurements.shoulderWidth}
             onChange={handleChange}
             className="input-field"
@@ -48,6 +49,7 @@ const MeasurementForm = () => {
           <input
             type="number"
             name="bustCircumference"
+            min="0"
             value={measurements.bustCircumference}
             onChange={handleChange}
             className="input-field"
@@ -60,6 +62,7 @@ const MeasurementForm = () => {
           <input
             type="number"
             name="waistCircumference"
+            min="0"
             value={measurements.waistCircumference}
             onChange={handleChange}
             className="input-field"
@@ -72,6 +75,7 @@ const MeasurementForm = () => {
           <input
             type="number"
             name="hipCircumference"
+            min="0"
             value={measurements.hipCircumference}
             onChange={handleChange}
             className="input-field"
@@ -81,7 +85,7 @@ const MeasurementForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+          className="w-ful py-2 px-4 rounded-lg btn-submit transition-colors"
         >
           Submit
         </button>
