@@ -5,13 +5,13 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder, MultiLabelBinarizer
 
 # Load the trained model and encoders
-with open("C:/Users/HP/Documents/Dev/Next JS/necklinedesign/data/RForestClassifier.pkl", "rb") as model_file:
+with open("../data/RForestClassifier.pkl", "rb") as model_file:
     multi_target_classifier = pickle.load(model_file)
 
-with open("C:/Users/HP/Documents/Dev/Next JS/necklinedesign/data/label_encoder_body_shape.pkl", "rb") as le_file:
+with open("../data/label_encoder_body_shape.pkl", "rb") as le_file:
     label_encoder_body_shape = pickle.load(le_file)
 
-with open("C:/Users/HP/Documents/Dev/Next JS/necklinedesign/data/mlb_neckline.pkl", "rb") as mlb_file:
+with open("../data/mlb_neckline.pkl", "rb") as mlb_file:
     mlb_neckline = pickle.load(mlb_file)
 
 app = FastAPI()
