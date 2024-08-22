@@ -1,15 +1,13 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from 'react';
 
-const ShapeResults = ({ shapeType }: { shapeType: string }) => {
-  const [necklineDesign, setNecklineDesign] = useState<string>('');
+const ShapeResults = ({ shapeType, necklineDesign }: { shapeType: string, necklineDesign: string }) => {
   const [styleGuide, setStyleGuide] = useState<string>('');
   const [fabricPatterns, setFabricPatterns] = useState<string>('');
 
   useEffect(() => {
-    // Temporary data, to be replaced with Atinuke's real logic to fetch designs and guides based on shapeType
-    setNecklineDesign('V-Neck');
+    // You can now fetch styleGuide and fabricPatterns based on the shapeType
     setStyleGuide('Fitted tops and A-line skirts');
     setFabricPatterns('Solid colors, small prints');
   }, [shapeType]);

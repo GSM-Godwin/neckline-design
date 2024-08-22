@@ -1,3 +1,4 @@
+# main.py
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pickle
@@ -25,13 +26,16 @@ class Measurements(BaseModel):
 def determine_shape(measurements: Measurements):
     try:
         # Prepare the data for prediction
-        input_data = np.array([[measurements.shoulderWidth, measurements.bustCircumference, measurements.waistCircumference, measurements.hipCircumference]])
+        input_data = np.array([[measurements.shoulderWidth, measurements.bustCircumference, 
+                                measurements.waistCircumference, measurements.hipCircumference]])
         
         # Make predictions
         prediction = multi_target_classifier.predict(input_data)
         
-        # Decode predictions
+        # Decode the body shape
         body_shape_pred = label_encoder_body_shape.inverse_transform([prediction[0, 0]])[0]
+        
+        # Decode the necklines
         neckline_pred = mlb_neckline.inverse_transform(prediction[0, 1:].reshape(1, -1))[0]
         
         return {
@@ -44,3 +48,5 @@ def determine_shape(measurements: Measurements):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+print("API is running!")
