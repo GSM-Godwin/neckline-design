@@ -29,7 +29,9 @@ const MeasurementForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Enter Your Measurements</h2>
+      <h1 className='text-2xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Blouse Recommender</h1>
+      <h2 className="text-2xl font-bold mb-2 text-center text-gray-800">Enter Your Measurements</h2>
+      <p className='italic text-gray-700 text-center mb-6 text-[12px]'>NB: All measurements should be in inches.</p>
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Shoulder Width</label>

@@ -18,26 +18,38 @@ const ResultsPageContent = () => {
           waistCircumference: searchParams.get('waistCircumference'),
           hipCircumference: searchParams.get('hipCircumference'),
         };
-
-        const res = await fetch('/api/shape', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(measurements),
-        });
-
-        const data = await res.json();
-        setShapeType(data.shapeType);
+        console.log("Measurements:", measurements);
+  
+        try {
+          const res = await fetch('/api/shape', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(measurements),
+          });
+  
+          const data = await res.json();
+          console.log("Received Data:", data); // Log the received data
+  
+          if (res.ok) {
+            setShapeType(data.shapeType);
+          } else {
+            console.error("Error fetching shape type:", data);
+          }
+        } catch (error) {
+          console.error("Fetch error:", error);
+        }
       }
     };
-
+  
     fetchShapeType();
   }, [searchParams]);
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      {shapeType ? <ShapeResults shapeType={shapeType} /> : <div className='flex flex-col items-center justify-center '><CircleLoader size="10vw" /> <p className='text-[#0a0a0a]7'>modelling suitable neckline designs...</p></div>}
+      {shapeType ? <ShapeResults shapeType={shapeType} /> : <div className='flex flex-col items-center justify-center '><CircleLoader size="10vw" /> <p className='text-[#0a0a0a]'>modelling suitable neckline designs...</p></div>}
     </div>
   );
 };
