@@ -14,6 +14,7 @@ const ShapeResults = ({ shapeType, necklineDesign }: { shapeType: string, neckli
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto mt-8">
+      <h1 className='text-2xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Blouse Recommender</h1>
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Your Shape Type: {shapeType}</h2>
       <div className="space-y-6">
         <div>
