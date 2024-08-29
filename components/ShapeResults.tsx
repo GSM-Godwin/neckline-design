@@ -110,7 +110,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
           <p className="text-gray-600 whitespace-pre-line">{styleGuide}</p>
         </div>
         <div>
-          <h3 className="text-lg italic text-gray-700">Our goal is to provide styling recommendations that flatter your figure and highlight your best attributes, ensuring you look and feel your best.</h3>
+          <h3 className="italic text-gray-700">Our goal is to provide styling recommendations that flatter your figure and highlight your best attributes, ensuring you look and feel your best.</h3>
         </div>
       </div>
     </div>
