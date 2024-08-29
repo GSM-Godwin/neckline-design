@@ -51,6 +51,30 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
             9. Wide-leg, flowing trousers are very flattering on an apple body shape as they balance out the wider midsection with the slimmer legs.`,
             necklineRec: 'When choosing a neckline, opt for a style that is wide and low. A wide neckline will create the illusion of broad shoulders, while a low neckline will elongate the body and provide a flattering break in the chest area. V-Neckline is a great choice.',
           };
+        case 'rectangle':
+          return {
+            styleGuide: `When aiming to create more curves, you can add volume to both your upper and lower body while leaving the waist as it is. Opt for flared bottoms such as pants or skirts. Alternatively, you can make your waist look slimmer by visually pulling it in and leaving the upper and lower body as they are. Use belted dresses or tops to create a waistline.
+              Here are some additional tips:
+              1. Wear well-structured clothing.
+              2. Experiment with different cuts and shapes to create curves.
+              3. Strategically use prints, textures, and details to create interest.
+              4. Wear bright colors on your upper and lower body, but avoid them around the waist, instead wear darker colors around the waist area.
+              5. Avoid clothes that end at the waist or emphasize it.
+              6. Avoid tucking tops into trousers or skirts unless the bottoms have volume.`,
+            necklineRec: 'To create curves, choose round necklines like scoop or jewel necklines. Lower, wider necklines such as wide V, slash, scoop, or sweetheart necklines lengthen the shoulder and bust area. Embellishments like big collars, lace trims, and ruffles can add volume and draw attention upwards. For a slender look, go for narrow necklines like turtlenecks, mandarin, crew, funnel, and halter necklines, and define the waist. Avoid square and straight necklines as they can add squareness to your body frame.',
+          };
+        case 'inverted triangle':
+          return {
+            styleGuide: `1. Soften broad shoulder lines with soft, draping, and weighty fabrics.
+              2. Avoid wide necklines and strong shoulder details (e.g., shoulder pads) as they may broaden the shoulders.
+              3. Steer clear of patterns on your tops and scarves around your neck and shoulders.
+              4. Create the illusion of a defined waist with waist details.
+              5. Choose clothes that add volume to the lower body to widen the hips.
+              6. Draw attention to your legs by wearing lighter, brighter colors or adding details.
+              7. Avoid skinny and tight trousers, as well as narrowing hemlines that visually reduce the lower body.
+              8. Avoid cropped shirts that end at the waist and details or embellishments around the upper body and shoulder area.`,
+            necklineRec: 'When choosing a neckline, opt for slim and long styles to visually reduce the width of the upper body. Deep and narrow scoop, U or V-necklines are great options. Asymmetric styles can help break up the chest vertically, while halter necks can help elongate the silhouette for those with a small bust. It is best to avoid wide and low necklines such as off-shoulder, bateau, square, and Sabrina styles, as they can add to the width of the shoulder line.',
+          };
         default:
           return {
             styleGuide: 'No specific styling tips available for this shape.',
