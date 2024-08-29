@@ -75,6 +75,15 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
               8. Avoid cropped shirts that end at the waist and details or embellishments around the upper body and shoulder area.`,
             necklineRec: 'When choosing a neckline, opt for slim and long styles to visually reduce the width of the upper body. Deep and narrow scoop, U or V-necklines are great options. Asymmetric styles can help break up the chest vertically, while halter necks can help elongate the silhouette for those with a small bust. It is best to avoid wide and low necklines such as off-shoulder, bateau, square, and Sabrina styles, as they can add to the width of the shoulder line.',
           };
+        case 'hourglass':
+          return {
+            styleGuide: `When dressing for this body shape, focus on maintaining balance and proportion to create a flattering silhouette. To achieve this, consider the following guidelines:
+              1. Avoid drawing attention to the hips and shoulders. Opt for clothing styles that don't exaggerate these areas, as it can disrupt the natural balance of your body shape.
+              2. Stay away from straight cuts and boxy styles that hide the waist. Instead, choose garments that accentuate or define the waistline to create a more balanced and shapely look.
+              3. Refrain from wearing shapeless and loose-fitting clothing. These types of garments can overwhelm your frame and detract from your natural body shape.
+              4. Avoid eye-catching embellishments that add unnecessary volume or bulk. This includes steering clear of big ruffles, bows, or other details that may disrupt the balance of your upper body without providing a flattering effect.`,
+            necklineRec: 'Slightly rounded styles like oval, deep oval, rounded, or jewel necklines are great because they are not too wide or too narrow and do not draw attention. Lower and wider necklines like scoop, sweetheart, V-neck, and off-the-shoulder are also good options.',
+          };
         default:
           return {
             styleGuide: 'No specific styling tips available for this shape.',
