@@ -5,7 +5,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const measurements = req.body;
 
     // Send measurements to the Python server and get the shape type
-    const response = await fetch('http://localhost:8000/shape', {
+    const response = await fetch('https://neckline-design.onrender.com/shape', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
