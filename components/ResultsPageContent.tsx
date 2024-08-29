@@ -67,7 +67,7 @@ const ResultsPageContent = () => {
       ) : (
         <div className='flex flex-col items-center justify-center'>
           <CircleLoader size="10vw" />
-          <p className='text-[#0a0a0a]'>Modeling suitable neckline designs...</p>
+          <p className='text-[#0a0a0a]'>Modeling your body shape...</p>
         </div>
       )}
     </div>
