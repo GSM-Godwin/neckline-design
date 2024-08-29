@@ -42,7 +42,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
         <div>
           <h3 className="text-lg font-semibold text-gray-700">You also have:</h3>
           <ul className="text-gray-600 list-disc list-inside">
-            {widerShoulders && <div>a wide shoulder</div>}
+            {widerShoulders && <li>a wide shoulder</li>}
             {slimmerHips && <li>slightly slim hips</li>}
             {fullerBust && <li>full bust</li>}
           </ul>
