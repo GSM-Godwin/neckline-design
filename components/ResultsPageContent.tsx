@@ -8,7 +8,10 @@ import ShapeResults from './ShapeResults';
 const ResultsPageContent = () => {
   const searchParams = useSearchParams();
   const [shapeType, setShapeType] = useState<string | null>(null);
-  const [necklineDesign, setNecklineDesign] = useState<string | null>(null)
+  const [necklineDesign, setNecklineDesign] = useState<string | null>(null);
+  const [widerShoulders, setWiderShoulders] = useState<boolean | null>(null);
+  const [slimmerHips, setSlimmerHips] = useState<boolean | null>(null);
+  const [fullerBust, setFullerBust] = useState<boolean | null>(null);
 
   useEffect(() => {
     const fetchShapeType = async () => {
@@ -36,6 +39,9 @@ const ResultsPageContent = () => {
           if (res.ok) {
             setShapeType(data.shapeType);
             setNecklineDesign(data.recommendedNecklines);
+            setWiderShoulders(data.widerShoulders);
+            setSlimmerHips(data.slimmerHips);
+            setFullerBust(data.fullerBust);
           } else {
             console.error("Error fetching shape type:", data);
           }
@@ -48,13 +54,18 @@ const ResultsPageContent = () => {
     fetchShapeType();
   }, [searchParams]);
   
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       {shapeType && necklineDesign ? (
-        <ShapeResults shapeType={shapeType} necklineDesign={necklineDesign} />
+        <ShapeResults 
+          shapeType={shapeType} 
+          necklineDesign={necklineDesign} 
+          widerShoulders={widerShoulders} 
+          slimmerHips={slimmerHips} 
+          fullerBust={fullerBust} 
+        />
       ) : (
-        <div className='flex flex-col items-center justify-center '>
+        <div className='flex flex-col items-center justify-center'>
           <CircleLoader size="10vw" />
           <p className='text-[#0a0a0a]'>Modeling suitable neckline designs...</p>
         </div>

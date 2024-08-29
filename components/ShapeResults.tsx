@@ -2,7 +2,21 @@
 
 import { useEffect, useState } from 'react';
 
-const ShapeResults = ({ shapeType, necklineDesign }: { shapeType: string, necklineDesign: string }) => {
+interface ShapeResultsProps {
+  shapeType: string;
+  necklineDesign: string;
+  widerShoulders: boolean | null;
+  slimmerHips: boolean | null;
+  fullerBust: boolean | null;
+}
+
+const ShapeResults: React.FC<ShapeResultsProps> = ({ 
+  shapeType, 
+  necklineDesign, 
+  widerShoulders, 
+  slimmerHips, 
+  fullerBust 
+}) => {
   const [styleGuide, setStyleGuide] = useState<string>('');
   const [fabricPatterns, setFabricPatterns] = useState<string>('');
 
@@ -17,18 +31,26 @@ const ShapeResults = ({ shapeType, necklineDesign }: { shapeType: string, neckli
       <h1 className='text-2xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Blouse Recommender</h1>
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Your Shape Type: {shapeType}</h2>
       <div className="space-y-6">
-        <div>
-          <h3 className="text-lg font-semibold text-gray-700">Recommended Neckline Design:</h3>
-          <p className="text-gray-600">{necklineDesign}</p>
-        </div>
-        <div>
+        {/* <div>
           <h3 className="text-lg font-semibold text-gray-700">Style Guide:</h3>
           <p className="text-gray-600">{styleGuide}</p>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <h3 className="text-lg font-semibold text-gray-700">Fabric Patterns:</h3>
           <p className="text-gray-600">{fabricPatterns}</p>
+        </div> */}
+        <div>
+          <h3 className="text-lg font-semibold text-gray-700">You also have:</h3>
+          <ul className="text-gray-600 list-disc list-inside">
+            {widerShoulders && <div>a wide shoulder</div>}
+            {slimmerHips && <li>slightly slim hips</li>}
+            {fullerBust && <li>full bust</li>}
+          </ul>
         </div>
+        {/* <div>
+          <h3 className="text-lg font-semibold text-gray-700">Recommended Neckline Design:</h3>
+          <p className="text-gray-600">{necklineDesign}</p>
+        </div> */}
       </div>
     </div>
   );
