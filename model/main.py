@@ -43,8 +43,8 @@ def determine_shape(measurements: Measurements):
         
         # Prepare the data for prediction
         input_data = np.array([[measurements.shoulderWidth, measurements.bustCircumference, 
-                                measurements.waistCircumference, measurements.hipCircumference, 
-                                wider_shoulders, slimmer_hips, fuller_bust]])
+        measurements.waistCircumference, measurements.hipCircumference, 
+        wider_shoulders, slimmer_hips, fuller_bust]])
         
         # Make predictions
         body_shape_prediction = body_shape_classifier.predict(input_data)
