@@ -18,29 +18,59 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
   fullerBust 
 }) => {
   const [styleGuide, setStyleGuide] = useState<string>('');
-  const [fabricPatterns, setFabricPatterns] = useState<string>('');
+  const [necklineRec, setNecklineRec] = useState<string>('');
 
   useEffect(() => {
-    // You can now fetch styleGuide and fabricPatterns based on the shapeType
-    setStyleGuide('Fitted tops and A-line skirts');
-    setFabricPatterns('Solid colors, small prints');
+    // Function to get dynamic styleGuide and necklineRecommendation based on shapeType
+    const getRecommendations = (shapeType: string) => {
+      switch (shapeType.toLowerCase()) {
+        case 'pear':
+          return {
+            styleGuide: `1. Use structured shoulders designs to widen the shoulder line in a flattering way.
+            2. Add some pop with bright colors on your upper body to bring some fun and energy to your look.
+            3. Play with eye-catching prints, textures, and details strategically to create visual interest at the top. 
+            4. Choose fitted clothes to highlight your waist and create a flattering silhouette.
+            5. Experiment with layering on your top half to add depth and draw the eye up.
+            6. Opt for tops that accentuate your waist rather than hiding it with boxy styles.
+            7. Try out darker colors on your lower body for a sleek and sophisticated look.
+            8. Avoid skinny and tight bottoms that might emphasize wider hips more than you'd like.
+            9. Stay away from embellished bottoms to draw less attention to the lower body.
+            10. Skip details, patterns, pockets on your thigh and hip area, and belts on your hips for a smoother look overall.`,
+            necklineRec: 'Wide necklines should be used to optically enlarge the pear body shape\'s shoulder and bust. Choose lower, wider necklines, such as square, bateau, and Sabrina necklines. Off-shoulder necklines add a few inches to your upper torso.',
+          };
+        case 'apple':
+          return {
+            styleGuide: `1. Choose clothing that is straight to slightly fitted and made of soft fabric to avoid extra bulk around the bust, waist, and tummy.
+            2. Focus on adding details above the bustline and below the hipline, and keep everything in between simple.
+            3. Highlight details on the hemline to draw attention to the legs.
+            4. Aim for a fitted silhouette under the bust, below the arms, and along the waist.
+            5. Select structured garments to hold in and disguise extra weight.
+            6. Wear bright colors on your lower body and darker colors around your waist area, such as a dark belt.
+            7. Opt for clothes that skim over the midsection while nipping right below the bust to lift the chest and make the waist appear slimmer.
+            8. Avoid excessive fabric around the midsection.
+            9. Wide-leg, flowing trousers are very flattering on an apple body shape as they balance out the wider midsection with the slimmer legs.`,
+            necklineRec: 'When choosing a neckline, opt for a style that is wide and low. A wide neckline will create the illusion of broad shoulders, while a low neckline will elongate the body and provide a flattering break in the chest area. V-Neckline is a great choice.',
+          };
+        default:
+          return {
+            styleGuide: 'No specific styling tips available for this shape.',
+            necklineRec: 'No specific neckline recommendation available for this shape.',
+          };
+      }
+    };
+
+    const recommendations = getRecommendations(shapeType);
+    setStyleGuide(recommendations.styleGuide);
+    setNecklineRec(recommendations.necklineRec);
   }, [shapeType]);
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto mt-8">
       <h1 className='text-xl md:text-2xl font-bold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Blouse Recommender</h1>
-      <h2 className="text-lg md:text-2xl mb-2 text-gray-800">Based on your measurements, we've indentified your body shape as <span className='font-bold'>{shapeType}</span>.</h2>
+      <h2 className="text-lg md:text-2xl mb-2 text-gray-800">Based on your measurements, we've identified your body shape as <span className='font-bold'>{shapeType}</span>.</h2>
       <div className="space-y-6">
-        {/* <div>
-          <h3 className="text-lg font-semibold text-gray-700">Style Guide:</h3>
-          <p className="text-gray-600">{styleGuide}</p>
-        </div> */}
-        {/* <div>
-          <h3 className="text-lg font-semibold text-gray-700">Fabric Patterns:</h3>
-          <p className="text-gray-600">{fabricPatterns}</p>
-        </div> */}
         <div>
-          <h3 className="text-lg text-gray-700">Along with this, you have</h3>
+          <h3 className="text-lg text-gray-700">Along with this, you have:</h3>
           <p className="text-gray-600 font-semibold list-disc list-inside">
             {widerShoulders && <span>broad shoulders, </span>}
             {fullerBust && <span>a full bust, </span>}
@@ -48,12 +78,16 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
           </p>
         </div>
         <div>
+          <h3 className="text-lg font-semibold text-gray-700">Neckline Recommendation:</h3>
+          <p className="text-gray-600">{necklineRec}</p>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold text-gray-700">Style Guide:</h3>
+          <p className="text-gray-600 whitespace-pre-line">{styleGuide}</p>
+        </div>
+        <div>
           <h3 className="text-lg italic text-gray-700">Our goal is to provide styling recommendations that flatter your figure and highlight your best attributes, ensuring you look and feel your best.</h3>
         </div>
-        {/* <div>
-          <h3 className="text-lg font-semibold text-gray-700">Recommended Neckline Design:</h3>
-          <p className="text-gray-600">{necklineDesign}</p>
-        </div> */}
       </div>
     </div>
   );
