@@ -127,7 +127,12 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
       )}
         <div>
           <h3 className="text-lg font-semibold text-gray-700">Neckline Recommendation</h3>
-          <Image src={NecklinesImg} alt='Necklike Vocabulary' />
+          <Image 
+            src={NecklinesImg} 
+            alt='Necklike Vocabulary' 
+            loading='lazy'
+            placeholder='blur'
+          />
           <p className="text-gray-600">{necklineRec}</p>
         </div>
         <div>
