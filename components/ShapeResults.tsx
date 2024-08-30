@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import NecklinesImg from "@/assets/necklines.jpg"
+import Image from 'next/image';
 
 interface ShapeResultsProps {
   shapeType: string;
@@ -98,24 +100,38 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
   }, [shapeType]);
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto mt-8">
+    <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto">
       <h1 className='text-xl md:text-2xl font-bold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Blouse Recommender</h1>
       <h2 className="text-lg md:text-2xl mb-2 text-gray-800">Based on your measurements, we've identified your body shape as <span className='font-bold'>{shapeType}</span>.</h2>
       <div className="space-y-6">
+      {(widerShoulders || fullerBust || slimmerHips) && (
         <div>
-          <h3 className="text-lg text-gray-700">Along with this, you have:</h3>
-          <p className="text-gray-600 font-semibold list-disc list-inside">
-            {widerShoulders && <span>broad shoulders, </span>}
-            {fullerBust && <span>a full bust, </span>}
-            {slimmerHips && <span>slightly slim hips</span>}
+          <h3 className="text-gray-700">Along with this, you have</h3>
+          <p className="text-gray-700 list-disc list-inside">
+            {(() => {
+              const conditions = [];
+              if (widerShoulders) conditions.push('broad shoulders');
+              if (fullerBust) conditions.push('a full bust');
+              if (slimmerHips) conditions.push('slightly slim hips');
+              
+              if (conditions.length === 2) {
+                return conditions.join(' & ') + '.';
+              } else if (conditions.length > 2) {
+                return conditions.slice(0, -1).join(', ') + ' & ' + conditions.slice(-1) + '.';
+              } else {
+                return conditions[0] + '.';
+              }
+            })()}
           </p>
         </div>
+      )}
         <div>
-          <h3 className="text-lg font-semibold text-gray-700">Neckline Recommendation:</h3>
+          <h3 className="text-lg font-semibold text-gray-700">Neckline Recommendation</h3>
+          <Image src={NecklinesImg} alt='Necklike Vocabulary' />
           <p className="text-gray-600">{necklineRec}</p>
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-gray-700">Style Guide:</h3>
+          <h3 className="text-lg font-semibold text-gray-700">Style Guide</h3>
           <p className="text-gray-600 whitespace-pre-line">{styleGuide}</p>
         </div>
         <div>
